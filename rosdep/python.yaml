@@ -251,7 +251,11 @@ paramiko:
       packages: [paramiko]
   rhel:
     '7': [python-paramiko]
-  ubuntu: [python-paramiko]
+  ubuntu:
+    '*': [python-paramiko]
+    focal:
+      pip:
+        packages: [paramiko]
 pi-ina219-pip:
   debian:
     pip:
@@ -400,6 +404,7 @@ python:
   ubuntu:
     artful: [python-dev]
     bionic: [python-dev]
+    focal: [python2-dev]
     lucid: [python-dev]
     maverick: [python-dev]
     natty: [python-dev]
@@ -888,6 +893,7 @@ python-catkin-pkg:
   ubuntu:
     artful: [python-catkin-pkg]
     bionic: [python-catkin-pkg]
+    focal: [python3-catkin-pkg]
     lucid: [python-catkin-pkg]
     maverick: [python-catkin-pkg]
     natty: [python-catkin-pkg]
@@ -926,7 +932,9 @@ python-catkin-pkg-modules:
   slackware:
     pip:
       packages: [catkin-pkg]
-  ubuntu: [python-catkin-pkg-modules]
+  ubuntu:
+    '*': [python-catkin-pkg-modules]
+    focal: [python3-catkin-pkg-modules]
 python-catkin-sphinx:
   fedora: [python-catkin-sphinx]
   osx:
@@ -1155,6 +1163,7 @@ python-coverage:
   ubuntu:
     artful: [python-coverage]
     bionic: [python-coverage]
+    focal: [python-coverage]
     lucid: [python-coverage]
     maverick: [python-coverage]
     natty: [python-coverage]
@@ -1337,7 +1346,11 @@ python-defusedxml:
   slackware:
     pip:
       packages: [defusedxml]
-  ubuntu: [python-defusedxml]
+  ubuntu:
+    '*': [python-defusedxml]
+    focal:
+      pip:
+        packages: [defusedxml]
 python-dialogflow-pip:
   arch:
     pip:
@@ -1438,7 +1451,11 @@ python-empy:
   slackware:
     pip:
       packages: [empy]
-  ubuntu: [python-empy]
+  ubuntu:
+    '*': [python-empy]
+    focal:
+      pip:
+        packages: [empy]
 python-enum:
   debian:
     jessie: [python-enum]
@@ -1822,7 +1839,11 @@ python-gnupg:
   openembedded: ['${PYTHON_PN}-gnupg@meta-ros']
   rhel:
     '7': [python2-gnupg]
-  ubuntu: [python-gnupg]
+  ubuntu:
+    '*': [python-gnupg]
+    focal:
+      pip:
+        packages: [gnupg]
 python-google-cloud-bigquery-pip:
   debian:
     pip:
@@ -2449,6 +2470,9 @@ python-matplotlib:
   ubuntu:
     artful: [python-matplotlib]
     bionic: [python-matplotlib]
+    focal:
+      pip:
+        packages: [matplotlib]
     lucid: [python-matplotlib]
     maverick: [python-matplotlib]
     natty: [python-matplotlib]
@@ -2494,6 +2518,7 @@ python-mock:
   ubuntu:
     artful: [python-mock]
     bionic: [python-mock]
+    focal: [python-mock]
     lucid: [python-mock]
     maverick: [python-mock]
     natty: [python-mock]
@@ -2656,6 +2681,7 @@ python-netifaces:
   ubuntu:
     artful: [python-netifaces]
     bionic: [python-netifaces]
+    focal: [python-netifaces]
     lucid: [python-netifaces]
     maverick: [python-netifaces]
     natty: [python-netifaces]
@@ -2712,6 +2738,7 @@ python-nose:
   ubuntu:
     artful: [python-nose]
     bionic: [python-nose]
+    focal: [python-nose]
     lucid: [python-nose]
     maverick: [python-nose]
     natty: [python-nose]
@@ -2847,7 +2874,13 @@ python-opencv:
   rhel:
     '7': [opencv-python]
   slackware: [opencv]
-  ubuntu: [python-opencv]
+  ubuntu:
+    '*': [python-opencv]
+    focal: [] # hack because of below
+#      pip:
+#        packages: [opencv-python]
+        # https://github.com/ros-infrastructure/rosdep/pull/694
+        # Must manually install opencv-python v4.2.0.32 from pip2 (latest version supported by python2)
 python-opengl:
   arch: [python2-opengl]
   debian: [python-opengl]
@@ -2865,6 +2898,7 @@ python-opengl:
   ubuntu:
     artful: [python-opengl]
     bionic: [python-opengl]
+    focal: [python-opengl]
     lucid: [python-opengl]
     maverick: [python-opengl]
     natty: [python-opengl]
@@ -2965,7 +2999,11 @@ python-paramiko:
   rhel:
     '7': [python-paramiko]
   slackware: [paramiko]
-  ubuntu: [python-paramiko]
+  ubuntu:
+    '*': [python-paramiko]
+    focal:
+      pip:
+        packages: [paramiko]
 python-parse:
   debian: [python-parse]
   ubuntu: [python-parse]
@@ -3325,7 +3363,11 @@ python-pydot:
   rhel:
     '7': [python2-pydot]
   slackware: [pydot]
-  ubuntu: [python-pydot]
+  ubuntu:
+    '*': [python-pydot]
+    focal:
+      pip:
+        packages: [pydot]
 python-pyexiv2:
   debian: [python-pyexiv2]
   fedora: [pyexiv2]
@@ -3379,7 +3421,11 @@ python-pygraphviz:
   rhel:
     '7': [python2-pygraphviz]
   slackware: [pygraphviz]
-  ubuntu: [python-pygraphviz]
+  ubuntu:
+    '*': [python-pygraphviz]
+    focal:
+      pip:
+        packages: [ pygraphviz ]
 python-pyinotify:
   debian: [python-pyinotify]
   fedora: [python-inotify]
@@ -3787,7 +3833,8 @@ python-qt5-bindings:
   slackware: [PyQt5]
   ubuntu:
     artful: [pyqt5-dev, python-pyqt5, python-pyqt5.qtsvg, python-sip-dev]
-    bionic: [pyqt5-dev, python-pyqt5, python-pyqt5.qtsvg, python-sip-dev]
+    bionic: [pyqt5-dev, python-pyqt5, python-sip-dev]
+    focal: [pyqt5-dev, pyqt5-dev-tools, python-sip-dev]
     wily: [libpyside2-dev, libshiboken2-dev, pyqt5-dev, python-pyqt5, python-pyqt5.qtsvg, python-pyside2, python-sip-dev, shiboken2]
     xenial: [libpyside2-dev, libshiboken2-dev, pyqt5-dev, python-pyqt5, python-pyqt5.qtsvg, python-pyside2, python-sip-dev, shiboken2]
     yakkety: [libpyside2-dev, libshiboken2-dev, pyqt5-dev, python-pyqt5, python-pyqt5.qtsvg, python-pyside2, python-sip-dev, shiboken2]
@@ -3806,6 +3853,7 @@ python-qt5-bindings-gl:
   ubuntu:
     artful: [python-pyqt5.qtopengl]
     bionic: [python-pyqt5.qtopengl]
+    focal: [pyqt5-dev]
     wily: [python-pyqt5.qtopengl]
     xenial: [python-pyqt5.qtopengl]
     yakkety: [python-pyqt5.qtopengl]
@@ -3829,6 +3877,7 @@ python-qt5-bindings-webkit:
   ubuntu:
     artful: [python-pyqt5.qtwebkit]
     bionic: [python-pyqt5.qtwebkit]
+    focal: [pyqt5-dev]
     wily: [python-pyqt5.qtwebkit]
     xenial: [python-pyqt5.qtwebkit]
     yakkety: [python-pyqt5.qtwebkit]
@@ -3950,7 +3999,9 @@ python-rosdep-modules:
   slackware:
     pip:
       packages: [rosdep]
-  ubuntu: [python-rosdep-modules]
+  ubuntu:
+    '*': [python-rosdep-modules]
+    focal: [python3-rosdep-modules]
 python-rosdistro:
   debian: [python-rosdistro]
   fedora: [python-rosdistro]
@@ -4029,6 +4080,9 @@ python-rospkg:
       packages: [rospkg]
   ubuntu:
     '*': [python-rospkg]
+    focal:
+      pip:
+        packages: [rospkg]
     trusty_python3: [python3-rospkg]
     utopic_python3: [python3-rospkg]
     vivid_python3: [python3-rospkg]
@@ -4057,7 +4111,9 @@ python-rospkg-modules:
   slackware:
     pip:
       packages: [rospkg]
-  ubuntu: [python-rospkg-modules]
+  ubuntu:
+    '*': [python-rospkg-modules]
+    focal: [python3-rospkg-modules]
 python-rpi.gpio:
   debian:
     buster: [python-rpi.gpio]
@@ -4265,6 +4321,7 @@ python-setuptools:
   ubuntu:
     artful: [python-setuptools]
     bionic: [python-setuptools]
+    focal: [python-setuptools]
     lucid: [python-setuptools]
     maverick: [python-setuptools]
     natty: [python-setuptools]
@@ -5328,6 +5385,7 @@ python-yaml:
   ubuntu:
     artful: [python-yaml]
     bionic: [python-yaml]
+    focal: [python-yaml]
     lucid: [python-yaml]
     maverick: [python-yaml]
     natty: [python-yaml]
